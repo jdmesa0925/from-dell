@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Declarative Perspective</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+      #viewpoint{
+        perspective: 1000px;
+      }
+      #box{
+        display: grid;
+        place-items: center;
+        width: 800px;
+        height: 800px;
+        color: lightgray;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px black;
+        transition: all 0.4s;
+        background-color: red;
+      }
+      #box::selection{
+        background:transparent;
+      }
+      #input{
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Square extends React.Component{
+              state = { degrees: 0 }
+
+              degreeChange = (event) => {
+                this.setState({ degrees: event.target.value })
+              }
+          render(){
+          return(
+            <React.Fragment>
+              <h1>
+              My favorite angle is {this.state.degrees} degrees
+              </h1>
+                  <div id='box' style={{transform: `rotateY(${this.state.degrees}deg)` }}>
+                  Do you even Code?
+                  </div>
+              <input
+                  type="range"
+                  min="0"
+                  max="240"
+                  value={this.state.degrees}
+                  onChange={this.degreeChange}
+              />
+            </React.Fragment>
+          )
+        }
+      }
+            ReactDOM.render(
+              <Square/>,
+            document.getElementById('root'))
+    </script>
+  </body>
+</html>

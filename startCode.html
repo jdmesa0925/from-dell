@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Manual Text</title>
+    <style>
+      #input{
+        width: 300px;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      My favorite word is
+      <span id="favorite">Wowwee Zowwee!</span>
+    </h1>
+    <input id="input" type="text" autocomplete="off" value="Wowwee Zowwee!">
+    <script>
+
+    const favorite = document.querySelector('#favorite')
+    const input = document.querySelector('#input')
+
+    input.addEventListener('keyup', changeWord)
+    input.addEventListener('change', changeWord)
+
+    function changeWord(){
+      favorite.textContent = input.value
+    }
+
+    </script>
+  </body>
+</html>

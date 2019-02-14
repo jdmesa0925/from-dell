@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Manual Perspective</title>
+    <style>
+      #viewpoint{
+        perspective: 1000px;
+      }
+      #box{
+        display: grid;
+        place-items: center;
+        width: 200px;
+        height: 200px;
+        color: lightgray;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px black;
+        transition: all 0.4s;
+        background-color: red;
+      }
+      #box::selection{
+        background:transparent;
+      }
+      #input{
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      My favorite angle is
+      <span id="favorite">0</span>
+      degrees
+    </h1>
+    <div id="viewpoint">
+      <div id="box" style="transform: rotateY(0deg)">
+        Don't Click Me Bro
+      </div>
+    </div>
+    <input id="input" type="range" min="0" max="180" value="0">
+    <script>
+      const box = document.querySelector('#box')
+      const favorite = document.querySelector('#favorite')
+      const input = document.querySelector('#input')
+
+        input.addEventListener('input', changeAngle)
+
+        function changeAngle(){
+          box.style.transform = `rotateY(${input.value}deg)`
+          favorite.textContent = input.value
+        }
+
+    </script>
+  </body>
+</html>

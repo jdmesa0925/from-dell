@@ -1,0 +1,138 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Input extends React.Component{
+        state = { number: 0 }
+
+        render(){
+          return(
+            <React.Fragment>
+              <h1>The number is {this.state.number}!</h1>
+            </React.Fragment>
+          )
+        }
+
+      }
+
+      ReactDOM.render(
+        <Input/>,
+        document.getElementById('root')
+      );
+
+    </script>
+  </body>
+</html>
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
+
+
+
+```<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Input extends React.Component{
+        state = { number: 0 }
+
+        handleChange = (event) => {
+          this.setState({ number: event.target.value })
+        }
+
+        render(){
+          return(
+            <React.Fragment>
+              <h1>The number is {this.state.number}!</h1>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={this.state.number}
+                onChange={this.handleChange}
+              />
+            </React.Fragment>
+          )
+        }
+
+      }
+
+      ReactDOM.render(
+        <Input/>,
+        document.getElementById('root')
+      );
+
+    </script>
+  </body>
+</html>```
+Message Input
+
+
+Message #current-c32 -->
+```<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>FizzBuzz in React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class FizzBuzz extends React.Component{
+        state = { number: 0 }
+
+        incrementNumber = () => {
+          this.setState({ number: this.state.number + 1})
+        }
+
+        resetNumber = () => {
+          this.setState({ number: 0 })
+        }
+
+        render(){
+          const n = this.state.number
+          return(
+            <React.Fragment>
+              <h1>
+                { n }:
+                {
+                  n % 15 === 0 ? 'FizzBuzz' : n % 3 === 0 ? 'Fizz' : n % 5 === 0 ? 'Buzz' : n
+                }
+              </h1>
+              <button onClick={this.incrementNumber}>Next</button>
+              <button onClick={this.resetNumber}>Reset</button>
+            </React.Fragment>
+          )
+        }
+
+      }
+
+      ReactDOM.render(
+        <FizzBuzz />,
+        document.getElementById('root')
+      )
+    </script>
+  </body>
+</html>```
+Message Input

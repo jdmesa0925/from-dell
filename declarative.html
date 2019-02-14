@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Declarative Colors</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+      #box{
+        display: grid;
+        place-items: center;
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+        color: lightgray;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px black;
+        transition: all 0.4s;
+      }
+      #box::selection{
+        background:transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Square extends React.Component{
+        state = { color: 'red' }
+
+        changeColor = () => {
+          let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+          colors = colors.filter(color => color !== this.state.color)
+
+          const randomIndex = Math.floor(Math.random() * colors.length)
+          const randomColor = colors[randomIndex]
+
+          this.setState({ color: randomColor })
+        }
+
+        render(){
+          return(
+            <React.Fragment>
+              <h1>
+                My favorite color is  <span style={{color: this.state.color}}>
+                                        { this.state.color }
+                                      </span>
+              </h1>
+              <div
+                id="box"
+                style={{backgroundColor: this.state.color}}
+                onClick={this.changeColor}
+              >
+                Click Me
+              </div>
+            </React.Fragment>
+          )
+        }
+      }
+      ReactDOM.render(<Square/>, document.getElementById('root'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Declarative Shapes</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+      #shape{
+        display: grid;
+        place-items: center;
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+        color: lightgray;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px black;
+        transition: all 0.4s;
+        background-color: red;
+      }
+      #shape::selection{
+        background:transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Shape extends React.Component{
+        state = { shape: this.props.shape }
+
+        changeShape = () => {
+          if(this.state.shape === 'square'){
+            this.setState({ shape: 'circle' })
+          }else{
+            this.setState({ shape: 'square' })
+          }
+        }
+
+        render(){
+          const { shape } = this.state
+          return(
+            <React.Fragment>
+              <h1>My favorite shape is a {this.state.shape}</h1>
+              <div
+                id="shape"
+                style={{borderRadius:
+`${shape === 'circle' ? 100 : 0 }%`
+}}
+                onClick={this.changeShape}
+              >
+                Click Me
+              </div>
+            </React.Fragment>
+          )
+        }
+      }
+      ReactDOM.render(
+      <div id = 'wrapper'>
+        <Shape shape = 'circle'/>
+        <Shape shape = 'square'/>
+        <Shape shape = 'circle'/>
+      </div>,
+ document.getElementById('root'))
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Declarative Shapes</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+      #shape{
+        display: grid;
+        place-items: center;
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+        color: lightgray;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px black;
+        transition: all 0.4s;
+        background-color: red;
+      }
+      #shape::selection{
+        background:transparent;
+      }
+      #canvas{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+      .wrapper{
+        display: grid;
+        place-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Shape extends React.Component{
+        state = { shape: this.props.fav }
+
+        changeShape = () => {
+          if(this.state.shape === 'square'){
+            this.setState({ shape: 'circle' })
+          }else{
+            this.setState({ shape: 'square' })
+          }
+        }
+
+        render(){
+          const { shape } = this.state
+          return(
+            <div className='wrapper'>
+              <h1>My favorite shape is a {this.props.fav}</h1>
+              <div
+                id="shape"
+                style={{borderRadius:
+`${shape === 'circle' ? 100 : 0 }%`
+}}
+                onClick={this.changeShape}
+              >
+                {this.state.shape === this.props.fav ? 'Yay' : 'Boo'}
+              </div>
+            </div>
+          )
+        }
+      }
+      ReactDOM.render(
+      <div id='canvas'>
+        <Shape fav='circle'/>
+        <Shape fav='square'/>
+        <Shape fav='circle'/>
+      </div>,
+      document.getElementById('root'))
+    </script>
+  </body>
+</html>
